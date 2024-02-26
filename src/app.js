@@ -4,7 +4,9 @@ import pkg from '../package.json'
 import productsRoutes from './routes/products.routes.js';
 const app = express();
 
-app.set('pkg', pkg)
+app.set('pkg', pkg);
+
+app.use(express.json()); /* configura el middleware que analiza las solicitudes entrantes con cuerpo en formato JSON. */
 
 app.use(morgan('dev'));
 
