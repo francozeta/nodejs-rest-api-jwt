@@ -5,7 +5,8 @@ import pkg from '../package.json';
 import { createRoles } from './libs/initialSetup.js'
 
 import productsRoutes from './routes/products.routes.js';
-import authRoutes from './routes/auth.routes.js'
+import authRoutes from './routes/auth.routes.js';
+import usersRoutes from './routes/user.routes.js';
 
 const app = express();
 createRoles();
@@ -26,5 +27,5 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', productsRoutes);
 app.use('/api/auth', authRoutes);
-
+app.use('/api/users', usersRoutes);
 export default app;

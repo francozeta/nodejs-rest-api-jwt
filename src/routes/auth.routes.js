@@ -1,8 +1,11 @@
 import { Router } from 'express';
-import * as authCtrl from '../controllers/auth.controller.js'
+import * as authCtrl from '../controllers/auth.controller.js';
+import { verifySignup } from '../middlewares/'; 
 const router = Router();
 
-router.post('/signup', authCtrl.signup);
+router.post('/signup',
+  [verifySignup.checkDuplicateUsernameOrEmail, verifySignup.checkRolesExisted],
+  authCtrl.signup);
 router.post('/signin', authCtrl.signin);
 
 
